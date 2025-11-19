@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home,
-                loader: () => fetch('https://communityserver-jwxh.onrender.com')
+                loader: () => fetch('https://communityserver-jwxh.onrender.com/complaints')
 
             },
             {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path: '/issues',
                 Component: Issues,
-                loader: () => fetch('https://communityserver-jwxh.onrender.com')
+                loader: () => fetch('https://communityserver-jwxh.onrender.com/complaints')
             },
             {
                 path: '/allIssues',

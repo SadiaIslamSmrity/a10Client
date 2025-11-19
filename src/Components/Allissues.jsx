@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router'
 import { motion } from 'framer-motion';
 
 const Allissues = () => {
-  const complaints = useLoaderData()
+  const complaints = useLoaderData();
 
   // States
   const [categoryFilter, setCategoryFilter] = useState("All");
