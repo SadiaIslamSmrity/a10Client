@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home,
-                loader: () => fetch('http://localhost:3000/complaints')
+                loader: () => fetch('https://communityserver-jwxh.onrender.com')
 
             },
             {
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:3000/complaints/${params.id}`)
+                    fetch(`https://communityserver-jwxh.onrender.com/complaints/${params.id}`)
             },
             {
                 path: '/issues',
                 Component: Issues,
-                loader: () => fetch('http://localhost:3000/complaints')
+                loader: () => fetch('https://communityserver-jwxh.onrender.com')
             },
             {
                 path: '/allIssues',
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
                         <Allissues />
                     </PrivateRoute>
                 ),
-                loader: () => fetch('http://localhost:3000/complaints')
+                loader: () => fetch('https://communityserver-jwxh.onrender.com/complaints')
             },
             {
                 path: '/myprofile',
