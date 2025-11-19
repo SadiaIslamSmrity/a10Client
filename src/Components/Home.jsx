@@ -9,19 +9,18 @@ import { Typewriter } from 'react-simple-typewriter';
 const Home = () => {
 
   const complaints = useLoaderData()
-  const [theme, setTheme] = useState("light");
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  }, []);
+  const [theme, setTheme] = useState(() => {
+  return localStorage.getItem("theme") || "light";
+});
 
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
+useEffect(() => {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+}, [theme]);
+
+const toggleTheme = () => {
+  setTheme(prev => (prev === "dark" ? "light" : "dark"));
+};
 
 
   return (
@@ -35,7 +34,7 @@ const Home = () => {
             border: "none",
             cursor: "pointer",
             marginTop: "1rem",
-            backgroundColor: theme === "dark" ? "#fff" : "#333",
+            backgroundColor: theme === "light" ? "#000" : "#fff",
             color: theme === "dark" ? "#000" : "#fff"
           }}
         >
