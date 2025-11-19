@@ -5,6 +5,7 @@ import { AuthContext } from './AuthContext';
 import { toast } from 'react-toastify';
 
 const Signup = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { user, login } = useContext(AuthContext);
   const [image, setImage] = useState(null);
 
@@ -17,7 +18,7 @@ const Signup = () => {
       image: e.target.image.value
     }
 
-    fetch('http://localhost:3000/register', {
+    fetch(`${API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

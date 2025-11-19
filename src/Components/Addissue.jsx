@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 const Addissue = () => {
   const { user } = useContext(AuthContext);
   const [image, setImage] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,7 +23,7 @@ const Addissue = () => {
       Status: e.target.Status.value
     }
 
-    fetch('http://localhost:3000/complaints', {
+    fetch(`${API_URL}/complaints`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

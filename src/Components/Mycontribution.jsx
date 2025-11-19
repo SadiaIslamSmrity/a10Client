@@ -8,10 +8,12 @@ import autoTable from 'jspdf-autotable';
 const Mycontribution = () => {
   const { user } = useContext(AuthContext);
   const [contributions, setContributions] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     if (user?.useremail) {
-      fetch(`http://localhost:3000/contribution/${user.useremail}`)
+      fetch(`${API_URL}/contribution/${user.useremail}`)
         .then(res => res.json())
         .then(data => Array.isArray(data) && setContributions(data))
         .catch(err => console.error(err));
@@ -60,10 +62,10 @@ const Mycontribution = () => {
               className="flex cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4"
             >
               <p>Download as PDF</p>
-              
+
               <span class="material-symbols-outlined">
-download
-</span>
+                download
+              </span>
             </button>
           </div>
 

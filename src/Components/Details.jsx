@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 const Details = () => {
     const complaint = useLoaderData();
     const { user } = useContext(AuthContext);
+    const API_URL = import.meta.env.VITE_API_URL;
+    
 
     const [showModal, setShowModal] = useState(false);
     const [contribution, setContribution] = useState("");
@@ -19,7 +21,7 @@ const Details = () => {
         if (!contribution || Number(contribution) <= 0) return;
 
         try {
-            const res = await fetch(`http://localhost:3000/complaints/contribute/${complaint._id}`, {
+            const res = await fetch(`${API_URL}/complaints/contribute/${complaint._id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ contribution, useremail: user.useremail }),
@@ -28,7 +30,7 @@ const Details = () => {
             if (data.success) {
                 toast.success("Contribution added successfully!");
 
-                await fetch("http://localhost:3000/contribution", {
+                await fetch(`${API_URL}/contribution`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

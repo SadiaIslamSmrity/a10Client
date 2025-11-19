@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
   const { user, logout, login } = useContext(AuthContext);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,7 +15,7 @@ const Login = () => {
       password: e.target.password.value,
     }
 
-    fetch('http://localhost:3000/login', {
+    fetch(`${API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

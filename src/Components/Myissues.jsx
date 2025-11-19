@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const Myissues = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { user } = useContext(AuthContext);
   const [issues, setIssues] = useState([]);
   const [selectedIssue, setSelectedIssue] = useState(null);
@@ -17,7 +18,7 @@ const Myissues = () => {
   useEffect(() => {
     if (!user) return;
 
-    fetch("http://localhost:3000/complaints")
+    fetch(`${API_URL}/complaints`)
       .then((res) => res.json())
       .then((data) => {
         const userIssues = data.filter(
@@ -46,7 +47,7 @@ const Myissues = () => {
   };
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/complaints/${selectedIssue._id}`, {
+    fetch(`${API_URL}/complaints/${selectedIssue._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -73,7 +74,7 @@ const Myissues = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this issue?");
     if (!confirmDelete) return;
 
-    fetch(`http://localhost:3000/complaints/${id}`, {
+    fetch(`${API_URL}/complaints/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
