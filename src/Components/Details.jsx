@@ -10,7 +10,7 @@ const Details = () => {
     const complaint = useLoaderData();
     const { user } = useContext(AuthContext);
     const API_URL = import.meta.env.VITE_API_URL;
-    
+
 
     const [showModal, setShowModal] = useState(false);
     const [contribution, setContribution] = useState("");
@@ -108,10 +108,11 @@ const Details = () => {
                             <input
                                 type="text"
                                 name="Paidby"
-                                value={paidBy}
-                                onChange={(e) => setPaidBy(e.target.value)}
-                                className="border p-3"
+                                value={user.useremail}
+                                readOnly
+                                className="border p-3 bg-gray-100"
                             />
+
                             <div className="flex justify-between mt-4">
                                 <button
                                     type="button"
