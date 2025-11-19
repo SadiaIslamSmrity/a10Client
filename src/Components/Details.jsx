@@ -44,7 +44,6 @@ const Details = () => {
 
                 setShowModal(false);
                 setContribution("");
-                window.location.reload();
             } else {
                 toast.error(data.message);
             }
